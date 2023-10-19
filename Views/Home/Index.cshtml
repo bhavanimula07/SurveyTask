@@ -1,0 +1,92 @@
+﻿@{
+    int clickcount = 0;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Survey</h1>
+</div>
+
+
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    button{
+        background-color:cornflowerblue;
+        font-size:15px;
+        border-radius:12px;
+        padding:5px 100px;
+    }
+</style>
+<body>
+    <hr />
+
+    <table border="0" width="100%">
+        <tr>
+    <td style="font-size:20px;">Test Survey</td>
+    <td></td>
+    <td></td>
+    <td>
+
+    </td>
+    <td>
+        <button id="myBtn">Start</button>
+            </td>
+    <script>
+        var c=@clickcount;
+        $(document).ready(function(){
+            $("#myBtn").click(function(){
+            if (c === 0)
+            {
+
+                $.ajax({
+                    url: '/Home/Index',
+                    type: 'POST',
+                    data: { clickcount: c },
+                    success: function (data) { }
+
+
+                });
+                this.innerHTML="Update";
+
+                c++;
+
+            }
+                else if (c === 1) {
+
+                    $.ajax({
+                        url: '/Home/Index',
+                        type: 'POST',
+                        data: { clickcount: c },
+                        success: function (data) { }
+
+
+                    });
+                    this.innerHTML = "Complete";
+
+                    c++;
+
+                }
+                else {
+                    $.ajax({
+                        url: '/Home/Index',
+                        type: 'POST',
+                        data: { clickcount: c },
+                        success: function (data) { }
+
+
+                    });
+                    this.innerHTML = "Survey Completed!!! ";
+
+                    c++;
+
+                }
+        });
+        });
+    </script>
+
+        </tr>
+    </table>
+</body>
+</html>
